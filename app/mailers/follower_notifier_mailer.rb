@@ -1,0 +1,2 @@
+class FollowerNotifierMailer < ApplicationMailer
+end

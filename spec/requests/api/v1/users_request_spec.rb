@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe "Users API" do
   it "can create a new user" do
-    user_params = { username: "coder123", created_at: Time.now, updated_at: Time.now }
+    user_params = { username: "coder123" }
 
-    post "api/v1/emails", params: {user: user_params}
+    post "/api/v1/users", params: {user: user_params}
     user = User.last
 
     assert_response :success

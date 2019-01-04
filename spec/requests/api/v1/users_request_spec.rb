@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe "Users API" do
   it "can create a new user" do
-    user_params = { username: "coder123" }
+    user_params = { username: "coder123",
+                    emails: ['notanemail@noemail.com',
+                             'anothernonemail@email.com']}
 
     post "/api/v1/users", params: {user: user_params}
     user = User.last
@@ -13,10 +15,12 @@ describe "Users API" do
   end
 
   it "can update a user" do
-    user = User.create(username: "coder123", created_at: Time.now - 86400, updated_at: Time.now - 86400 )
+    user = User.create(username: "coder123", created_at: Time.now - 172800, updated_at: Time.now - 172800 )
     username = user.username
 
-    user_params = { username: "coder123" }
+    user_params = { username: "coder123",
+                    emails: ['notanemail@noemail.com',
+                             'anothernonemail@email.com']}
     post "/api/v1/users", params: {user: user_params}
 
     updated_user = User.find_by(username: username)
